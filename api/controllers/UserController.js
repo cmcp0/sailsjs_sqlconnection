@@ -14,18 +14,31 @@ module.exports = {
 	},
 
 	create : function(req, res, next) {
+		console.log(req.ip);
+		var nuad = {};
 
 		User.create(req.params.all(), function userCreated(err, user){
 			if (err) {
 				console.log(err);
-				user["success"] = false;
-				res.json(user);
+				var asdf = {};
+				asdf["success"] = false;
+				res.json(asdf);
 				return next(err);
 			}
-			console.log(user);
-			user["success"] = true;
-			console.log(user);
 
+			user["success"] = true;
+			nuad = {
+				us : user,
+				where : "New user created",
+				ip : req.ip.toString()
+			};
+			Uad.create(nuad).exec(function(err, reg){
+				if (err) {
+					return console.log(err);
+				}
+				console.log(reg);
+				return reg
+			});
 			res.json(user);
 		});
 

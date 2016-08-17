@@ -17,7 +17,10 @@ module.exports = {
     where : {
       type : 'string'
     },
-
+    
+    ip : {
+      type : 'string'
+    }
 
   }
 };

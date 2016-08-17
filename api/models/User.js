@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  //schema : true,
+  schema : true,
   attributes: {
 
     name : {
@@ -24,7 +24,7 @@ module.exports = {
     ut : {
       type : 'string',
       enum : ['default','premium'],
-      
+
     },
     password : {
       type : 'string'
