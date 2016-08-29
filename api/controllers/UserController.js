@@ -47,7 +47,7 @@ module.exports = {
 	userLogin : function (req, res, next){
 
 
-
+		var nuad = {};
 		var edata,idata;
 		edata = req.params.all();
 		//console.log(edata.email);
@@ -75,7 +75,18 @@ module.exports = {
 					"ut" : data.ut,
 					"success" : true
 				};
-
+				nuad = {
+					us : data,
+					where : "User logged",
+					ip : req.ip.toString()
+				};
+				Uad.create(nuad).exec(function(err, reg){
+					if (err) {
+						return console.log(err);
+					}
+					console.log(reg);
+					return reg
+				});
 				console.log(obj);
 				res.json(obj);
 			}else {
@@ -88,31 +99,6 @@ module.exports = {
 
 		});
 
-
-
-		/*
-		try {
-
-		var idata = User.find({email : edata.email});
-		} catch (e) {
-
-			var idata = false;
-		}
-		console.log(idata);
-
-		if (idata!=false) {
-			if (edata.password == idata.password) {
-				var nobje.name = idata.name;
-				nobje.ut = idata.ut;
-				nobje.success = true;
-				res.jason(nobje);
-			} else {
-				nobje.success = false;
-				res.jason(nobje);
-
-			}
-		}
-		*/
 
 	},
 

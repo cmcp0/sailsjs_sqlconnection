@@ -6,6 +6,9 @@
  */
 
 module.exports = {
+
+  connection: 'MysqlServer',
+  migrate: 'safe',
   schema : true,
   attributes: {
 
@@ -17,7 +20,8 @@ module.exports = {
     email : {
       type : 'email',
       unique : true,
-      columnName : 'email_adress',
+      primaryKey: true,
+
       required: true
 
     },
